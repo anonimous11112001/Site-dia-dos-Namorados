@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navegacao">
+        <ul class="menu">
+            <li><a href="#inicio" class="menu-link">Início</a></li>
+            <li><a href="#sobre" class="menu-link">Sobre</a></li>
+            <li><a href="#contato" class="menu-link">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main id="inicio" class="cabecalho">
+        <h1>Conte sua história e transforme ela em uma obra de arte!</h1>
+        <div class="imagem" id="imagem-container">
+            <img src="img/urso1.jpg" alt="presente" class="fotos">
+            <img src="img/urso2.jpg" alt="presente" class="fotos">
+            <img src="img/rosas.jpg" alt="presente" class="fotos">
+            <img src="img/rosas2.jpg" alt="presente" class="fotos">
+            <img src="img/buque.jpg" alt="presente" class="fotos">
+            <img src="img/buque2.jpg" alt="presente" class="fotos">
+            <img src="img/buque3.jpg" alt="presente" class="fotos">
+            <div class="caixa-botao-meio">
+                <h3 class="botao-meio"></h3>
+                <button type="button" class="botao-meio-surpresa" onclick="fazerSurpresa()">Faça uma surpresa!</button>
+            </div>
+            <img src="img/buque4.jpg" alt="presente" class="fotos">
+            <img src="img/foto1.jpg" alt="presente" class="fotos">
+            <img src="img/presente2.jpg" alt="presente" class="fotos">
+            <img src="img/beijo1.jpg" alt="presente" class="fotos">
+            <img src="img/buque5.jpg" alt="presente" class="fotos">
+            <img src="img/mesa.jpg" alt="presente" class="fotos">
+            <img src="img/mesa2.jpg" alt="presente" class="fotos">
+            <img src="img/mesa3.jpg" alt="presente" class="fotos">
+            <img src="img/mesa4.jpg" alt="presente" class="fotos">
+            <img src="img/bolo1.jpg" alt="presente" class="fotos">
+            <img src="img/piquinique1.jpg" alt="presente" class="fotos">
+            <img src="img/piquinique2.jpg" alt="presente" class="fotos">
+        </div>
+
+        <div  class="adicionar-fotos" id="adicionar-fotos" style="display: none;">
+            <h1 class="mensagem-fotos">Adicione suas fotos!</h1>
+            <input type="file" accept="image/*" class="input-fotos" multiple id="input-fotos">
+            <textarea placeholder="Escreva uma mensagem..." class="caixa-mensagem" id="mensagem" rows="6"></textarea>
+            <button onclick="enviarFotos()" class="botao-enviar-fotos">Enviar Fotos</button>
+        </div>
+
+        <div class="caixa-botao-meio">
+            <h3 class="botao-meio"></h3>
+            <button type="button" class="botao-meio-surpresa">A Importância do Presente: Um presente significativo pode dizer muito mais do que palavras. Ele demonstra atenção, cuidado e a vontade de fazer o outro feliz. Ao escolher um presente para essa data especial, você não só celebra o amor, mas também reforça o vínculo entre vocês.</button>
+        </div>
+    </main>
+
+    <section class="sobre" id="sobre">
+        <h2 class="sobre-titulo"></h2>
+    </section>
+
+    <section id="contato" class="contato">
+        <h2 class="contatos-titulo">Entre em Contato</h2>
+        <form class="formulario-contato" id="formulario-contato" onsubmit="enviarWhats(event)">
+            <div class="grupo-form">
+                <input placeholder="Nome" class="campo-form" id="nome">
+            </div>
+
+            <div class="grupo-form">
+                <textarea class="campo-form" placeholder="Digite sua Mensagem" rows="6" id="mensagem"></textarea>
+            </div>
+            <button type="submit" class="botao-form">Enviar WhatsApp</button>
+        </form>
+    </section>
+
+    <script>
+        function fazerSurpresa() {
+            // Esconde as imagens
+            const imagemContainer = document.getElementById('imagem-container');
+            imagemContainer.style.display = 'none';
+
+            // Mostra a área para adicionar fotos
+            const adicionarFotos = document.getElementById('adicionar-fotos');
+            adicionarFotos.style.display = 'block';
+        }
+
+        function enviarFotos() {
+            const inputFotos = document.getElementById('input-fotos');
+            const mensagem = document.getElementById('mensagem').value;
+
+            // Aqui você pode adicionar a lógica para processar as fotos e a mensagem
+            console.log("Fotos enviadas:", inputFotos.files);
+            console.log("Mensagem:", mensagem);
+
+            // Você pode fazer algo com as fotos e a mensagem, como enviá-las para um servidor ou exibi-las na página
+        }
+
+        function enviarWhats(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const mensagem = document.getElementById('mensagem').value;
+            const telefone = '5548984135684';
+
+            const texto = `Olá! Me chamo ${nome}. ${mensagem}`;
+            const msgFormatada = encodeURIComponent(texto);
+
+            const url = `https://wa.me/${telefone}?text=${msgFormatada}`;
+
+            console.log(url);
+            window.open(url, '_blank');
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 Guilherme B. S. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
